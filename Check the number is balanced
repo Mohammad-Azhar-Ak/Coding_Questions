@@ -1,0 +1,23 @@
+class Solution{
+public:	
+	bool balancedNumber(string N)
+	{
+	    // code here
+	    int len=N.length();
+	    int actual=len/2;
+	    int sum1=0,sum2=0;
+	    for(int i=0,j=actual+1;i<actual,j<len;i++,j++)
+	    {
+	        sum1=sum1+(N[i]-48);
+	        sum2=sum2+(N[j]-48);
+	    }
+	    if(sum1==sum2)
+	    {
+	        return true;
+	    }
+	    else
+	    {
+	        return false;
+	    }
+	}
+};
