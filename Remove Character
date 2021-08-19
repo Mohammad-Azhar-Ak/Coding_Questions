@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    string removeChars(string string1, string string2) {
+        int hash[26];
+        string s="";
+        memset(hash,0,sizeof(hash));
+        for(int i=0;i<string2.size();i++)
+        {
+            hash[string2[i]-'a']++;
+        }
+        for(int i=0;i<string1.size();i++)
+        {
+            if(hash[string1[i]-'a']==0)
+            {
+                s.push_back(string1[i]);
+            }
+        }
+        return s;
+    }
+};
