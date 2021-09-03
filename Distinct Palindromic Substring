@@ -1,0 +1,79 @@
+int palindromeSubStrs(string str) {
+        // code here
+        int n = str.length();
+
+string s = "";
+map<string ,int>m;
+for(int i = 0 ; i < n ; i++){
+s.push_back(str[i]), s.push_back('@');
+string p = "";
+p.push_back(str[i]);
+m[p]++;
+
+}
+
+
+
+
+for(int i = 0 ; i < 2*n ; i++)
+{
+if(s[i]=='@')
+{
+string f = "" , b = "";
+int l = i-1, r = i+1;
+while(l >=0 && r <= 2*n)
+{
+if(s[l]!=s[r])
+break;
+else
+{
+if(s[l]!='@')
+f.push_back(s[l]) , b.push_back(s[r]);
+
+string temp = "";
+for(int j = f.length() - 1 ; j>=0;j--)
+temp.push_back(f[j]);
+for(int j =0 ; j < b.length();j++)
+temp.push_back(b[j]);
+
+if(temp!="")
+m[temp]++;
+}
+l--;r++;
+}
+}
+else
+{
+string f = "" , b = "";
+int l = i-1, r = i+1;
+f.push_back(s[i]);
+while(l >=0 && r <= 2*n)
+{
+if(s[l]!=s[r])
+break;
+else
+{
+if(s[l]!='@')
+f.push_back(s[l]) , b.push_back(s[r]);
+
+string temp = "";
+for(int j = f.length() - 1 ; j>=0;j--)
+temp.push_back(f[j]);
+for(int j =0 ; j < b.length();j++)
+temp.push_back(b[j]);
+
+if(temp!="")
+m[temp]++;
+}
+l--;r++;
+}
+
+}
+}
+
+int sum = 0;
+for(auto a = m.begin() ; a!=m.end() ; a++)
+sum++;
+
+return sum;
+}
