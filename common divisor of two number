@@ -1,0 +1,43 @@
+// C++ implementation of program
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to calculate gcd of two numbers
+long long gcd(long long a, long long b)
+{
+	if (a == 0)
+		return b;
+	return gcd(b % a, a);
+}
+
+// Function to calculate all common divisors
+// of two given numbers
+// a, b --> input integer numbers
+long long commDiv(long long  a, long long b)
+{
+	// find gcd of a, b
+	long long n = gcd(a, b);
+
+	// Count divisors of n.
+	long long result = 0;
+	for (long long i = 1; i <= sqrt(n); i++) {
+		// if 'i' is factor of n
+		if (n % i == 0) {
+			// check if divisors are equal
+			if (n / i == i)
+				result += 1;
+			else
+				result += 2;
+		}
+	}
+	return result;
+}
+
+// Driver program to run the case
+int main()
+{
+	long long a,b;
+	cin>>a>>b;
+	cout << commDiv(a, b);
+	return 0;
+}
