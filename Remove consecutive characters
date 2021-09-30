@@ -1,0 +1,30 @@
+string Solution::solve(string A, int B) {
+    
+    int i=0,j=0,k;
+    string ans;
+    while(i<A.size())
+    {
+        if(A[i]==A[j]&&j<A.size())
+        {
+            j++;
+        }
+        else
+        {
+            if((j-i)!=B)
+            {
+                for(k=i;k<j;k++)
+                {
+                    ans.push_back(A[k]);
+                }
+                i=j;
+            }
+            else
+            {
+                i=j;
+            }
+
+        }
+    
+    }
+    return ans;
+}
