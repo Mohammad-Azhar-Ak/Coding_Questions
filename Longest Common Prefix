@@ -1,0 +1,56 @@
+string Solution::longestCommonPrefix(vector<string> &A) {
+    int count=0;
+    int k=0;
+    int flag=0;
+    string ans;
+    for(int i=0;i<A[0].size();i++)
+    {
+        char ch = A[0][k];
+        for(int i=1;i<A.size();i++)
+        {
+            if(A[i][k]!=A[0][k])
+            {
+                flag=1;
+                break;
+            }
+           
+        }
+        if(flag==1)
+        {
+            return ans;
+        }
+        count++;
+        ans.push_back(A[0][k]);
+        k++;
+
+
+
+    }
+    return ans;
+}
+
+// Second approach
+
+string Solution::longestCommonPrefix(vector<string> &strs) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+    
+    
+    if (strs.size() == 0) return "";
+            string ans = "";
+            for (int i = 0; i < strs[0].length(); i++) {
+                // checking if character i qualifies to be in the answer. 
+                bool isQualified = true; 
+                for (int j = 1; j < strs.size(); j++) {
+                    if (i >= strs[j].length() || strs[j][i] != strs[0][i]) {
+                        isQualified = false;
+                        break;
+                    }
+                }
+                if (!isQualified) break;
+                ans.push_back(strs[0][i]);
+            }
+            return ans;
+}
