@@ -1,0 +1,45 @@
+int Solution::strStr(const string A, const string B) {
+    int n = A.size();
+    int m = B.size();
+    if(n<m)
+    {
+        return -1;
+    }
+    if(n==m)
+    {
+        for(int i=0;i<n;i++)
+        {
+            if(A[i]!=B[i])
+            {
+                return -1;
+            }
+        }
+    }
+    int count=0,flag=1,u=0;
+    for(int i=0;i<n;i++)
+    { u=0;
+       if(A[i]==B[u])
+       {
+           int k=i;
+           while(u<B.size())
+           {
+               if(A[k]!=B[u])
+               {
+                   break;
+               }
+               else
+               {
+                   u++;
+                   k++;
+               }
+           }
+           if(u==B.size())
+           {
+               return i;
+
+           }
+       }
+    }
+   
+    return -1;
+}
